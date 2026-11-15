@@ -1,24 +1,26 @@
 # AI weather models and the butterfly effect
 
-Do machine-learning weather models amplify tiny initial-condition errors the way
-the real atmosphere does? This repository holds experiments that measure how small
-perturbations grow (or don't) in AI forecast models.
+Weather is sensitive to small perturbations in its initial conditions, which results in
+the Butterfly Effect. AI weather models, however, have struggled to reproduce this
+error growth. In this repository, we test whether AI weather models amplify tiny
+initial-condition errors the way the real atmosphere does, and under which conditions.
 
 | Folder | Model | Status |
 |---|---|---|
-| [`pangu/`](pangu/) | [Pangu-Weather](https://github.com/198808xc/Pangu-Weather) | done |
+| [`pangu/`](pangu/) | [PanguWeather](https://github.com/198808xc/Pangu-Weather) | done |
 | `aifs/` | [ECMWF AIFS](https://github.com/ecmwf/anemoi-inference) | coming |
 
-**This repo contains analysis code only.** I did not develop the models. They are
-run as released by their authors, and their weights are not redistributed here.
+**This repository contains our experiment and analysis code only.** The models were
+developed by their original authors. We run them as released, and their weights are not
+redistributed here.
 
 ## Credit
 
-Pangu-Weather:
+PanguWeather:
 
 > Bi, K., Xie, L., Zhang, H., Chen, X., Gu, X., & Tian, Q. (2023).
 > Accurate medium-range global weather forecasting with 3D neural networks.
 > *Nature*, 619, 533–538. https://doi.org/10.1038/s41586-023-06185-3
 
-Initial conditions come from ECMWF operational analyses (MARS) and ERA5
+The initial conditions are obtained from ECMWF operational analyses (MARS) and ERA5
 (Copernicus Climate Data Store).

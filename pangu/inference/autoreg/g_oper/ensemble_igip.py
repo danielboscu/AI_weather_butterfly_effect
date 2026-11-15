@@ -60,7 +60,7 @@ for model_number in model_numbers:
         # Load and add gaussian noise to the input numpy arrays
         input_step = np.load(os.path.join(input_data_dir, 'oper_g_pl.npy'))
         # seeded on member only, so every scale perturbs the same field and the sweep varies amplitude alone
-        rng = np.random.default_rng([20210626, m])
+        rng = np.random.default_rng([42, m])
         noise = rng.standard_normal(input_step.shape) * scale
         input_step[2:, :, :, :] = (input_step[2:, :, :, :] + noise[2:, :, :, :]).astype(np.float32)
 
