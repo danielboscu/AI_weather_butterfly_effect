@@ -1,0 +1,5 @@
+# AIFS-ENS 1.0 in full fp32; input.grib and output.grib are set by the job.
+checkpoint: models/aifs-ens-1.0.ckpt
+lead_time: 72
+precision: "32"
+date: 2021-06-26T00

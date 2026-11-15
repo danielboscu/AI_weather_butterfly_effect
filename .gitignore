@@ -1,6 +1,9 @@
 # model weights (non-commercial licence, download separately)
 *.onnx
+*.ckpt
 pangu/models
+aifs/models
+aifs/.venv*/
 
 # data and run output
 *.npy
@@ -10,7 +13,8 @@ pangu/models
 *.grib2
 *.idx
 
-# PBS job output
+# PBS and SLURM job output
+slurm-*.out
 *.o[0-9]*
 *.e[0-9]*
 *.log

@@ -67,7 +67,9 @@ for m in my_members:
     temp_path = os.path.join(output_data_dir, f"{m}")
     os.makedirs(temp_path, exist_ok=True)
     input_step = np.load(os.path.join(input_data_dir, 'oper_g_pl.npy'))
-    noise = np.random.normal(0, scale, input_step.shape)
+    # seeded on member only, as in the autoreg Gaussian runs
+    rng = np.random.default_rng([42, m])
+    noise = rng.standard_normal(input_step.shape) * scale
     input_step[2:, :, :, :] = (input_step[2:, :, :, :] + noise[2:, :, :, :]).astype(np.float32)
 
     input_surface_step = np.load(os.path.join(input_data_dir, 'oper_g_sfc.npy')).astype(np.float32)

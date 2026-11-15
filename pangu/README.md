@@ -50,6 +50,7 @@ inference/
 analysis/    distill_run.py   reduce raw output to diag/{u300,v300,u850,z500}.npy
              *_pres.py, cartopy_*, *compare*   figures
              pangu_paths.py   output-directory layout (shared)
+             plot_config_pangu.py  matplotlib style (shared)
 jobs/        PBS job scripts (NCAR Derecho), one per step
 figures/     results, grouped into model_step/, perturbation_scale/, precision/, dataset/
 ```
@@ -99,9 +100,11 @@ qsub dke_autoreg_by_step_tf32_vs_fp32_pres.sh
 - **EDA member indexing:** index 0 of the EDA array is the control. Members use
   `[:, m]` for m = 1..N, so the control is never treated as a perturbation. The
   operational EDA gives up to 50 members and the ERA5 EDA up to 9.
-- **The Gaussian noise is seeded on the member only** (`default_rng([42, m])`).
-  Every scale therefore perturbs the same field, so a scale sweep only changes the
-  amplitude.
+- **The Gaussian noise is seeded on the member only** (`default_rng([42, m])`), in both
+  the greedy and the autoregressive runs. Every scale therefore perturbs the same field,
+  so a scale sweep only changes the amplitude. The published figures were made with seed
+  20210626 for the autoregressive runs and unseeded greedy runs, so a rerun gives
+  slightly different curves.
 - **"1e-3" means different things for the two perturbation types.** For EDA it is
   dimensionless (0.1% of the EDA spread). For Gaussian it is 1e-3 m/s in u and v and
   1e-3 K in T, applied uniformly on all 13 levels.
